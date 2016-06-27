@@ -14,7 +14,7 @@
 	<div id="tags">
 
 		<?foreach($all_tags as $key => $val):?>
-		<a href=""> <?=$val['title']?></a>&nbsp;
+		<a href="http://<?=SITE_NAME;?>/tags/title/<?=$val['href']?>"> <?=$val['title']?></a>&nbsp;
 
 
 		<?endforeach;?>

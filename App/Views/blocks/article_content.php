@@ -4,11 +4,11 @@
     <? if($article): ?>
 
             <h3> <?=$article['title']?> </h3>
-            <p> <?=$article['text']?> </p>
+            <p> <?=$article['full_article']?> </p>
 
         <?foreach($tags as $key => $val):?>
 
-            <a href = "http://<?=SITE_NAME;?>/tags/<?=$val['href']?>"><?=$val['title'];?></a>
+            <a href = "http://<?=SITE_NAME;?>/tags/title/<?=$val['href']?>"><?=$val['title'];?></a>
 
 
             <?endforeach;?>
@@ -18,6 +18,8 @@
         <p>Такой статьи нет!!!</p>
 
     <? endif; ?>
+
+
 
 </div> <!-- end div main_contnet -->
 <div class="clear"></div>
