@@ -11,13 +11,28 @@
 
 </nav>
 
-	<div id="tags">
-
-		<?foreach($all_tags as $key => $val):?>
-		<a href="http://<?=SITE_NAME;?>/tags/title/<?=$val['href']?>"> <?=$val['title']?></a>&nbsp;
+	<script type="text/javascript">
 
 
-		<?endforeach;?>
+		$.fn.tagcloud.defaults = {
+			size: {start: 14, end: 18, unit: 'pt'},
+			color: {start: '#cde', end: '#f52'}
+		};
+
+		$(function () {
+			$('#tag_cloud a').tagcloud();
+		});
+
+
+	</script>
+
+	<div id="tag_cloud">
+
+
+		<?for($i = 0;$i < count($all_tags);$i++):?>
+			<a href="http://<?=SITE_NAME;?>/tags/title/<?=$all_tags[$i]['href'];?>" rel="<?=$i?>"> <?=$all_tags[$i]['title'];?></a>&nbsp;
+
+		<?endfor;?>
 
 
 		</div>

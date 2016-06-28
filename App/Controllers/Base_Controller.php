@@ -13,7 +13,9 @@ class Base_Controller extends Main_Controller
 
             $this->model_object = Model::instance();
 
-        $this->all_tags = $this->model_object->get_all_tags();
+            $this->all_tags = $this->model_object->get_all_tags();
+
+        $this->scripts = ['jQuery','jquery.tagcloud','test'];
 
     }
 
