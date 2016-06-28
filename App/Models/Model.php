@@ -32,6 +32,8 @@ class Model
     }
 
 
+
+
     public function get_all_tags(){
         $sql = "SELECT * FROM tags";
         $result = self::$database_object->prepared_select($sql);
@@ -53,20 +55,9 @@ class Model
         return $result[0];
     }
 
-    public function get_articles_by_tag($tag_name){
-        $tag_id = $this->get_tag_id($tag_name);
-        $tag_id = (int)$tag_id['id'];
-        $sql = "SELECT * FROM articles JOIN articles_tags ON articles.id = articles_tags.article_id WHERE articles_tags.tag_id=".$tag_id;
-        $result = self::$database_object->prepared_select($sql);
-        return $result;
-    }
 
-    protected function get_tag_id($tag_name){
-        $sql = "SELECT id FROM tags WHERE href='$tag_name'";
 
-        $result = self::$database_object->prepared_select($sql);
-        return $result[0];
-    }
+
 
 
 

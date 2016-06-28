@@ -38,15 +38,15 @@
 
 
 			<? if($navigation['first']):?>
-				<a href="http://<?=SITE_NAME;?>/articles/page/<?=$navigation['first'];?>">первая</a>
+				<a href="http://<?=SITE_NAME;?>/<?=$href;?>/page/<?=$navigation['first'];?>">первая</a>
 			<?endif;?>
 			<? if($navigation['arrow_back']):?>
-				<a href="http://<?=SITE_NAME;?>/articles/page/<?=$navigation['arrow_back'];?>"> <<< </a>
+				<a href="http://<?=SITE_NAME;?>/<?=$href;?>/page/<?=$navigation['arrow_back'];?>"> <<< </a>
 			<?endif;?>
 			<? if($navigation['previous']):?>
 				<? foreach($navigation['previous'] as $val):?>
 
-					<a href="http://<?=SITE_NAME;?>/articles/page/<?=$val;?>"><?=$val;?></a>
+					<a href="http://<?=SITE_NAME;?>/<?=$href;?>/page/<?=$val;?>"><?=$val;?></a>
 				<? endforeach;?>
 			<? endif;?>
 			<? if($navigation['current']):?>
@@ -55,20 +55,19 @@
 
 			<? if($navigation['next']):?>
 				<? foreach($navigation['next'] as $val):?>
-					<a href="http://<?=SITE_NAME;?>/articles/page/<?=$val;?>"><?=$val;?></a>
+					<a href="http://<?=SITE_NAME;?>/<?=$href;?>/page/<?=$val;?>"><?=$val;?></a>
 				<? endforeach;?>
 			<? endif;?>
 
 			<? if($navigation['arrow_forward']):?>
-				<a href = "http://<?=SITE_NAME;?>/articles/page/<?=$navigation['arrow_forward'];?>"> >>>> </a>
+				<a href = "http://<?=SITE_NAME;?>/<?=$href;?>/page/<?=$navigation['arrow_forward'];?>"> >>>> </a>
 			<? endif;?>
 
 			<? if($navigation['last_page']):?>
-				<a href = "http://<?=SITE_NAME;?>/articles/page/<?=$navigation['last_page'];?>"> последняя </a>
+				<a href = "http://<?=SITE_NAME;?>/<?=$href;?>/page/<?=$navigation['last_page'];?>"> последняя </a>
 			<? endif;?>
 
 		</div>
-
 
 
 	<?endif;?>

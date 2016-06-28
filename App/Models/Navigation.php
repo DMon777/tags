@@ -75,8 +75,44 @@ class Navigation
         $shift = $this->posts_by_one_page*($this->current_page - 1);
         $sql = "SELECT * FROM articles LIMIT $shift,$this->posts_by_one_page";
         $result = self::$database_object->prepared_select($sql);
+
+        foreach($result as $key => $val){
+            $result[$key]['tags'] = Model::instance()->get_tags($val['id']);
+        }
         return $result;
 
+    }
+
+    public function get_articles_by_tag($tag_name){
+        $shift = $this->posts_by_one_page*($this->current_page - 1);
+        $tag_id = $this->get_tag_id($tag_name);
+        $tag_id = (int)$tag_id['id'];
+        $sql = "SELECT * FROM articles JOIN articles_tags ON articles.id = articles_tags.article_id WHERE articles_tags.tag_id=".$tag_id." LIMIT $shift,$this->posts_by_one_page";
+        $result = self::$database_object->prepared_select($sql);
+
+        foreach($result as $key => $val){
+            $result[$key]['tags'] = Model::instance()->get_tags($val['id']);
+        }
+        return $result;
+    }
+
+    public function count_articles(){
+        $sql = "SELECT COUNT(*) as count from articles";
+        return (int)self::$database_object->prepared_select($sql)[0]['count'];
+    }
+
+    public function count_articles_by_tags($tag_name){
+        $tag_id = $this->get_tag_id($tag_name);
+        $tag_id = (int)$tag_id['id'];
+        $sql = "SELECT COUNT(*) as count FROM articles  JOIN articles_tags ON articles.id = articles_tags.article_id WHERE articles_tags.tag_id=".$tag_id;
+        $result = self::$database_object->prepared_select($sql);
+        return (int)$result[0]['count'];
+    }
+
+    protected function get_tag_id($tag_name){
+        $sql = "SELECT id FROM tags WHERE href='$tag_name'";
+        $result = self::$database_object->prepared_select($sql);
+        return $result[0];
     }
 
 
